@@ -1,14 +1,14 @@
 # Luna —scan for security
 
-[![Name](https://img.shields.io/badge/Name-Luna-blue.svg)](https://www.tokula.com)[![Python 2.6|2.7](https://img.shields.io/badge/python-2.6|2.7-orange.svg)](https://www.python.org/)[![Author](https://img.shields.io/badge/Author-tokula.com-yellow.svg)](https://www.tokula.com)[![Sec](https://img.shields.io/badge/Web-Security-brightgreen.svg)](https://www.tokula.com/donate)
+[![Name](https://img.shields.io/badge/Name-Luna-blue.svg)](https://www.tokula.com)  [![Python 2.6|2.7](https://img.shields.io/badge/python-2.6|2.7-orange.svg)](https://www.python.org/)  [![Author](https://img.shields.io/badge/Author-tokula.com-yellow.svg)](https://www.tokula.com)  [![Sec](https://img.shields.io/badge/Web-Security-brightgreen.svg)]()
 
-Luna 是一款开源的自动化web漏洞扫描工具，利用最轻量的代码构建被动式扫描框架。主要用途是实现对漏洞扫描策略的快速验证，验证源来自burpsuite中收集的httplog，扫描策略来自独立的python插件。
+​        Luna 是一款开源的自动化web漏洞扫描工具，利用最轻量的代码构建被动式扫描框架。主要用途是实现对漏洞扫描策略的快速验证，验证源来自burpsuite中收集的httplog，扫描策略来自独立的python插件。
 
-**郑重声明**：<u>Luna仅供网络安全爱好者学习和探讨使用，一切利用本工具和基于本工具二次开发的工具进行非法攻击的行为与Luna无关。</u>
+**郑重声明**：Luna仅供网络安全爱好者学习和探讨使用，一切利用本工具和基于本工具二次开发的工具进行非法攻击的行为与Luna无关。
 
-Luna is an open-source web security scanner which is based on reduced-code passive scanning framework. We can write a simple python plugin to prove our great ideas with Luna. The format of httplog is the plaintext saved by Burpsuite, and thanks to PortSwigger Ltd.
+​        Luna is an open-source web security scanner which is based on reduced-code passive scanning framework. We can write a simple python plugin to prove our great ideas with Luna. The format of httplog is the plaintext saved by Burpsuite, and thanks to PortSwigger Ltd.
 
-**Disclaimer**:  <u>Luna is a study demo for web security fans. Anyone who attacks website through Luna(or rewrite by Luna) which breaks the law will take the full responsibility by himself. </u>  
+**Disclaimer**:  Luna is a study demo for web security fans. Anyone who attacks website through Luna(or rewrite by Luna) which breaks the law will take the full responsibility by himself. 
 
 ##Screenshots
 ![logo](https://user-images.githubusercontent.com/32926900/34332221-6ae1e398-e969-11e7-954f-f3c1756f82d9.png)
@@ -26,8 +26,12 @@ Luna is an open-source web security scanner which is based on reduced-code passi
 下载 [Luna](https://github.com/toyakula/luna/) 源码包 
 
 或直接使用git下载安装
+
     git clone  https://github.com/toyakula/luna.git
+
 Luna运行在python  **2.6.x** 和 **2.7.x** 环境下。
+
+
 
 Download [Luna](https://github.com/toyakula/luna/) package
 
@@ -48,13 +52,17 @@ Luna works out of the box with [Python](http://www.python.org/download/) version
 
 2. 修改'conf/lunaconf.py'
 
-    Modify 'conf/lunaconf.py'
-
     `host_port=[['127.0.0.1','80'],]` 
     `http_log = 'lunahttplog.txt'`
 
     设置扫描目标的域名和端口，指定存放httplog的文件。
 
+
+ Modify 'conf/lunaconf.py'
+
+    `host_port=[['127.0.0.1','80'],]` 
+    `http_log = 'lunahttplog.txt'`
+    
     Set the target(['host','port']) and set the file which httplog saved in.
 
 3.  python luna.py
