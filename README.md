@@ -35,7 +35,7 @@ Luna运行在python  **2.6.x** 和 **2.7.x** 环境下。
 
 Download [Luna](https://github.com/toyakula/luna/) package
 
-Preferably, you can download sqlmap by using git
+Preferably, you can download Luna by using git
 
     git clone  https://github.com/toyakula/luna.git
 
