@@ -1,3 +1,4 @@
+from __future__ import print_function
 import re
 import time
 
@@ -221,7 +222,7 @@ class ref_xss(lunaexp.base):
             return False
 
     def in_dangertag(self,tagtext):
-        print tagtext
+        print(tagtext)
         time.sleep(5)
         tag_end = tagtext.find(" ")
         if tag_end+1:

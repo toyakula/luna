@@ -1,3 +1,4 @@
+from __future__ import print_function
 import output
 
 import socket
@@ -238,7 +239,7 @@ class lunascan(object):
                 gziper = gzip.GzipFile(fileobj=compressedstream)    
                 new_replyline = gziper.read() 
 
-            except Exception  as e:
+            except Exception as e:
                 #print e
                 new_replyline = replyline
             
@@ -247,7 +248,7 @@ class lunascan(object):
             self.response = self.response.response + '\r\n' + replyline
 
         except  Exception as e:
-            print e
+            print(e)
             new_replyline = ''
             reply_status = 0
             reply_msg = ''

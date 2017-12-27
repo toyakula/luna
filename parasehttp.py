@@ -1,3 +1,4 @@
+from __future__ import print_function
 import output
 import function
 
@@ -42,7 +43,7 @@ class parasehttp(object):
                     key_val.append('')
                 self.get_value_list.append(key_val[1])
                 if len(self.get_key_list) != len(self.get_value_list):
-                    print "GET key value error!"
+                    print("GET key value error!")
                     return -1 
 
 
@@ -55,7 +56,7 @@ class parasehttp(object):
                 key_val.append('')
             self.post_value_list.append(key_val[1])
             if len(self.post_key_list) != len(self.post_value_list):
-                print "POST key value error!"
+                print("POST key value error!")
                 return -1  
             
     def parase_cookie(self):
@@ -70,7 +71,7 @@ class parasehttp(object):
                     key_val.append('')
             self.cookie_value_list.append(key_val[1])
             if len(self.cookie_key_list) != len(self.cookie_value_list):
-                    print "Cookie key value error!"
+                    print("Cookie key value error!")
                     return -1 
 
 
@@ -101,7 +102,7 @@ class parasehttp(object):
                     self.parase_get()
 
             else:
-                print "not dynamic"
+                print("not dynamic")
                 func.SYSTEM_CLEAN()
                 return -1
 
@@ -127,18 +128,18 @@ class parasehttp(object):
                             self.parase_post()
                             
                     elif type_m.group(1)[:20] == 'multipart/form-data;':
-                        print "multipart"
+                        print("multipart")
                         return -1
 
                     else:
-                        print "post error"
+                        print("post error")
                         return -1
             else:
-                print "not dynamic"
+                print("not dynamic")
                 func.SYSTEM_CLEAN()
                 return -1
         else:
-            print text
+            print(text)
             return -1    
 
         luna_output.general_output(self)

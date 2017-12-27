@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 
 class lunalog(object):
@@ -8,7 +9,7 @@ class lunalog(object):
         try:
             file = open(self.filename,'w+')
         except IOError as e:
-            print "Fatal Error: Can not open file [%s]." %(self.filename)       
+            print("Fatal Error: Can not open file [%s]." %(self.filename))       
             exit(-1)
         if level == "warring":
             file.write("Warring Error: %s.%s" %(text,os.linesep))

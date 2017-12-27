@@ -1,3 +1,4 @@
+from __future__ import print_function
 import output
 import conf.lunaconf as lunaconf
 import lunalog
@@ -25,7 +26,7 @@ class filecontroller(object):
             file = open(self.filename)
         except IOError as e:
             luna_log.log_fatal("Can not open file [%s]." %(self.filename))
-            print "Can not open file [%s]." %(self.filename)
+            print("Can not open file [%s]." %(self.filename))
             exit(-1)
         count = 0
         boundary = 0

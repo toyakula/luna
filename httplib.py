@@ -65,6 +65,7 @@ Unread-response                _CS_IDLE           <response_class>
 Req-started-unread-response    _CS_REQ_STARTED    <response_class>
 Req-sent-unread-response       _CS_REQ_SENT       <response_class>
 """
+from __future__ import print_function
 
 from array import array
 import os
@@ -373,7 +374,7 @@ class HTTPResponse:
         if len(line) > _MAXLINE:
             raise LineTooLong("header line")
         if self.debuglevel > 0:
-            print "reply:", repr(line)
+            print("reply:", repr(line))
         if not line:
             # Presumably, the server closed the connection before
             # sending a valid response.
@@ -425,7 +426,7 @@ class HTTPResponse:
                 if not skip:
                     break
                 if self.debuglevel > 0:
-                    print "header:", skip
+                    print("header:", skip)
 
         self.status = status
         self.reason = reason.strip()
@@ -449,7 +450,7 @@ class HTTPResponse:
         self.response+= str(self.msg)
         if self.debuglevel > 0:
             for hdr in self.msg.headers:
-                print "header:", hdr,
+                print("header:", hdr, end=' ')
 
         # don't let the msg keep an fp
         self.msg.fp = None
@@ -816,10 +817,10 @@ class HTTPConnection:
                 raise NotConnected()
 
         if self.debuglevel > 0:
-            print "send:", repr(data)
+            print("send:", repr(data))
         blocksize = 8192
         if hasattr(data,'read') and not isinstance(data, array):
-            if self.debuglevel > 0: print "sendIng a read()able"
+            if self.debuglevel > 0: print("sendIng a read()able")
             datablock = data.read(blocksize)
             while datablock:
                 self.sock.sendall(datablock)
@@ -1007,14 +1008,14 @@ class HTTPConnection:
         thelen = None
         try:
             thelen = str(len(body))
-        except TypeError, te:
+        except TypeError as te:
             # If this is a file-like object, try to
             # fstat its file descriptor
             try:
                 thelen = str(os.fstat(body.fileno()).st_size)
             except (AttributeError, OSError):
                 # Don't send a length if this failed
-                if self.debuglevel > 0: print "Cannot stat!!"
+                if self.debuglevel > 0: print("Cannot stat!!")
 
         if thelen is not None:
             self.putheader('Content-Length', thelen)
@@ -1155,7 +1156,7 @@ class HTTP:
                 #only add this keyword if non-default for compatibility
                 #with other connection classes
                 response = self._conn.getresponse(buffering)
-        except BadStatusLine, e:
+        except BadStatusLine as e:
             ### hmm. if getresponse() ever closes the socket on a bad request,
             ### then we are going to have problems with self.sock
 

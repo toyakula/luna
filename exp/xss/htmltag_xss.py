@@ -32,7 +32,7 @@ class htmltag_xss(lunaexp.base):
         self.match_with = ""
 
         status,header,body = luna_scan.scan_for_all(self,0,scan_type,urlencode_type)
-        if header.has_key('Content-Type'):
+        if 'Content-Type' in header:
             if header['Content-Type'] in self.content_type_whitelist:
                 return False,self.match_with
 

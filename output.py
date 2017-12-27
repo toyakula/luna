@@ -1,3 +1,4 @@
+from __future__ import print_function
 import function
 
 import os
@@ -14,7 +15,7 @@ class output(object):
     def startup(self):
         func.SYSTEM_CLEAN()
         for i in range(10):
-            print "------------------------------------------------------------"
+            print("------------------------------------------------------------")
         func.SLEEP()
 
     def standard_output(self,host,port,total,now):

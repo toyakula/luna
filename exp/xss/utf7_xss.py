@@ -23,7 +23,7 @@ class utf7_xss(lunaexp.base):
 
     def scan_main(self,luna_scan,luna_report,scan_type,urlencode_type):                                                        #user_define
         status,header,body = luna_scan.scan_for_all(self,0,scan_type,urlencode_type)
-        if header.has_key('Content-Type'):
+        if 'Content-Type' in header:
             if header['Content-Type'] in self.content_type_whitelist or ( header['Content-Type'].find("charset") != -1 and header['Content-Type'].find("utf-7") == -1):
                 return False
         data = body

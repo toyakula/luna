@@ -1,3 +1,4 @@
+from __future__ import print_function
 import re
 import time
 
@@ -44,7 +45,7 @@ class sqli(lunaexp.base):
 
         for i,closure_prefix in enumerate(self.closure_prefix):
             self.value_exp = closure_prefix+self.time_base_exp[0] + self.closere_suffix[i]
-            print self.value_exp
+            print(self.value_exp)
             a= time.time()
             status,header,data = luna_scan.scan_for_all(self,0,scan_type,urlencode_type)
             b= time.time()
