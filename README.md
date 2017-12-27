@@ -6,14 +6,18 @@ Luna 是一款开源的自动化web漏洞扫描工具，利用最轻量的代码
 
 **郑重声明**：Luna仅供网络安全爱好者学习和探讨使用，一切利用本工具和基于本工具二次开发的工具进行非法攻击的行为与Luna无关。
 
-Luna is an open-source web security scanner which is based on reduced-code passive scanning framework. We can write a simple python plugin to prove our great ideas with Luna. The format of httplog is the plaintext saved by Burpsuite, and thanks to PortSwigger Ltd.
+Luna is an open-source web security scanner which is based on reduced-code passive scanning framework. You can write a simple python plugin to prove your great ideas with Luna. The format of httplog is the plaintext saved by Burpsuite, and thanks to PortSwigger Ltd.
 
 **Disclaimer**:  Luna is a study demo for web security fans. Anyone who attacks website through Luna(or rewrite by Luna) which breaks the law will take the full responsibility by himself. 
 
 ## Screenshots
 ![logo](https://user-images.githubusercontent.com/32926900/34332221-6ae1e398-e969-11e7-954f-f3c1756f82d9.png)
 
+
+
 ![structure](https://user-images.githubusercontent.com/32926900/34332292-fd28d8c4-e969-11e7-8f7b-39df47652438.png)
+
+![luna_arch](https://user-images.githubusercontent.com/32926900/34368738-2b6602b0-eaf1-11e7-8f60-2bd2f80970b9.png)
 
 ![running](https://user-images.githubusercontent.com/32926900/34332254-b0f9e09c-e969-11e7-9b7b-5df3013d34e7.jpg)
 
