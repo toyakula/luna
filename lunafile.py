@@ -1,5 +1,5 @@
 import output
-from conf import lunaconf
+import conf.lunaconf as lunaconf
 import lunalog
 
 import time
