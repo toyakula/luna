@@ -1,6 +1,6 @@
 import lunascan
 import parasehttp
-import lunaconf
+import conf.lunaconf as lunaconf
 
 import sys
 import time
