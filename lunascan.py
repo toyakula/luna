@@ -305,19 +305,6 @@ class lunascan(object):
                     luna_exp.scan(self,luna_report)
                         
 
-    def pre_scan(self,luna_prescan):
-
-        if len(self.get_text) != 0 and len(self.get_key_list)>0:
-            self.setpointer(0,1)
-            luna_prescan.scan(self,luna_report)
-            luna_prescan.pre_scan_count += 1
-            return
-
-        if len(self.post_text) != 0 and len(self.post_key_list)>0:
-            self.setpointer(0,2)
-            luna_prescan.scan(self,luna_report)
-            luna_prescan.pre_scan_count += 1
-            return
 
     def scan_key(self):
         if self.type_pointer == 1:
