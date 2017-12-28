@@ -1,3 +1,4 @@
+from __future__ import print_function
 import sqlite3
 import json
 import time
@@ -68,6 +69,6 @@ class sqlite(object):
             time.sleep(3)
             cgiresult = self.sqlite_con.execute("SELECT hostid FROM host WHERE hostname = ? ",(host,))
             result = cgiresult.fetchone()
-            print result
+            print(result)
             self.sqlite_con.execute("DELETE  FROM cgi WHERE hostid = ? ",result)
             self.conn.commit()
