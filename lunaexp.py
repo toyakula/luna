@@ -14,6 +14,8 @@ class base(object):
     value_exp = ''                                                                      #a=1[here]
     content_type_whitelist = []                                                         #content_type  whitelist                                                   
     options = 0x00                                                                      #master switch
+    rule_type = 'null'                                                                  #for report
+    match_with = 'null'                                                                 #for report
 
     def __init__(self):
 
