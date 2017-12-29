@@ -3,15 +3,15 @@ import time
 
 class lunareport(object):
 
-    title_list = 0xFF                 # 0b00000001    ref-xss
-                                     # 0x00000010    sql
+    title_list = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     title_no = 0
 
     rep_file = ''
     vul_type = 0 
 
-    refxss_part =''
-    sqli_part = ''
+    vul_title= ['General','Reflected XSS','SQL Injection']
+    vul_text = ['','','','','','','','','','','','','','','']
+
 
     file_name = ''
 
@@ -188,52 +188,46 @@ function g(){
 
         self.rep_file.close()
 
-    def draw_title(self,vul_title,part_type):
+    def draw_title(self,part_type):
        
         part_title="""
         <div  style="padding-top:100px;padding-left:300px;">
             <div style=" width:30px; height:30px; background-color:#7BCD33; border-radius:25px;">
          <span style="color:#FFFFFF; display:block;width:1300px;padding-left:8px;"><h3>
-         """+str(self.title_no)+"&nbsp;&nbsp;&nbsp;&nbsp;"+vul_title+"""</h3></span>
+         """+str(self.title_no)+"&nbsp;&nbsp;&nbsp;&nbsp;"+self.vul_title[part_type]+"""</h3></span>
             </div>
              <span style="color:#FFFFFF;">
                 <table style="border-collapse:separate; border-spacing:20px; ">
                     <tr><td width="10%" ><strong><font size="4">Url</font></strong></td><td width="10%"><strong><font size="4">Method</font></strong></td><td width="10%"><strong><font size="4">Parameter</font></strong></td><td width="20%"><strong><font size="4">Request</font></strong></td><td width="20%"><strong><font size="4">Response</font></strong></td><td width="10%"><strong><font size="4">Rule-id</font></strong></td><td width="10%"><strong><font size="4">Rule-type</font></strong></td><td width="10%"><strong><font size="4">Match-with</font></strong></td></tr>
                     """
 
-        if part_type == 1:
-            self.refxss_part += part_title
-        if part_type == 2:
-            self.sqli_part += part_title
+
+        self.vul_text[part_type] += part_title
+
 
     def report_http(self,luna_scan,luna_exp):
 
         text = luna_scan.request.replace('>', '&gt;').replace('<','&lt;').replace("\r\n","<br>")
         response = luna_scan.response.replace('>', '&gt;').replace('<','&lt;').replace("\r\n","<br>")
 
-        if (luna_exp.ruleid>>8) == 1:
-            if (self.title_list&0b00000001)>>0 == 1 :
-                self.title_list &= 0b11111110
-                self.title_no += 1
-                vul_title = 'Reflected XSS'
-                self.draw_title(vul_title,1)
 
-            self.refxss_part += '<tr><td><font size="3">'+luna_scan.host+luna_scan.cgi.replace('>', '&gt;').replace('<','&lt;')+'</font></td><td><font size="3">'+luna_scan.http_method+'</font></td><td><font size="3">'+luna_scan.scan_key().replace('>', '&gt;').replace('<','&lt;')+'</font></td><td ondblclick="$(this).hide();$(this).next().show(2000);"><font size="3">'+luna_scan.request[:70]+'...</td><td style="display:none;white-space: nowrap;" ondblclick="$(this).hide();$(this).prev().show(2000);"><font size="3">'+text+'</font></td><td ondblclick="$(this).hide();$(this).next().show(2000);"><font size="3">'+luna_scan.response[:70]+'...</td><td style="display:none;white-space: nowrap;" ondblclick="$(this).hide();$(this).prev().show(2000);"><font size="3">'+response+'</font></td><td><font size="3">'+str(luna_exp.ruleid)+'</font></td><td><font size="3">'+luna_exp.rule_type+'</font></td><td><font size="3">'+luna_exp.match_with.replace('>', '&gt;').replace('<','&lt;')+'</font></td></tr>'
+        part_type = luna_exp.ruleid>>8
+        if (self.title_list[part_type]) == 0 :
+            self.title_list[part_type] = 1
+            self.title_no += 1
+            self.draw_title(part_type)
 
-        if (luna_exp.ruleid>>8) == 2:
-            if (self.title_list&0b00000010)>>1 == 1 :
-                self.title_list &= 0b11111101
-                self.title_no += 1
-                vul_title = 'SQL Injection'
-                self.draw_title(vul_title,2)
-
-            self.sqli_part += '<tr><td><font size="3">'+luna_scan.host+luna_scan.cgi.replace('>', '&gt;').replace('<','&lt;')+'</font></td><td><font size="3">'+luna_scan.http_method+'</font></td><td><font size="3">'+luna_scan.scan_key().replace('>', '&gt;').replace('<','&lt;')+'</font></td><td ondblclick="$(this).hide();$(this).next().show(2000);"><font size="3">'+luna_scan.request[:70]+'...</td><td style="display:none;white-space: nowrap;" ondblclick="$(this).hide();$(this).prev().show(2000);"><font size="3">'+text+'</font></td><td ondblclick="$(this).hide();$(this).next().show(2000);"><font size="3">'+luna_scan.response[:70]+'...</td><td style="display:none;white-space: nowrap;" ondblclick="$(this).hide();$(this).prev().show(2000);"><font size="3">'+response+'</font></td><td><font size="3">'+str(luna_exp.ruleid)+'</font></td><td><font size="3">'+luna_exp.rule_type+'</font></td><td><font size="3">'+luna_exp.match_with.replace('>', '&gt;').replace('<','&lt;')+'</font></td></tr>'
-
+        self.vul_text[part_type] += '<tr><td><font size="3">'+luna_scan.host+luna_scan.cgi.replace('>', '&gt;').replace('<','&lt;')+'</font></td><td><font size="3">'+luna_scan.http_method+'</font></td><td><font size="3">'+luna_scan.scan_key().replace('>', '&gt;').replace('<','&lt;')+'</font></td><td ondblclick="$(this).hide();$(this).next().show(2000);"><font size="3">'+luna_scan.request[:70]+'...</td><td style="display:none;white-space: nowrap;" ondblclick="$(this).hide();$(this).prev().show(2000);"><font size="3">'+text+'</font></td><td ondblclick="$(this).hide();$(this).next().show(2000);"><font size="3">'+luna_scan.response[:70]+'...</td><td style="display:none;white-space: nowrap;" ondblclick="$(this).hide();$(this).prev().show(2000);"><font size="3">'+response+'</font></td><td><font size="3">'+str(luna_exp.ruleid)+'</font></td><td><font size="3">'+luna_exp.rule_type+'</font></td><td><font size="3">'+luna_exp.match_with.replace('>', '&gt;').replace('<','&lt;')+'</font></td></tr>'
         end_table = '</table> </span></div>'
+
         self.rep_file=open(self.file_name,'w')
         self.rep_file.write(self.content)
-        self.rep_file.write(self.refxss_part+end_table)
-        self.rep_file.write(self.sqli_part+end_table)
+
+        for i in range(0xF):
+            if self.title_list[i] == 0 :
+                continue
+            self.rep_file.write(self.vul_text[part_type]+end_table)
+
         self.rep_file.write("</body></html>")
         self.rep_file.flush()
 

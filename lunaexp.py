@@ -48,10 +48,13 @@ class base(object):
 
     def before_scan(self,luna_scan,luna_report):        #Scan once before ver key and value
         header = luna_scan.scan_for_header(self,1,1,0)
-        if header.has_key('Content-Type'):
-            if header['Content-Type'] in self.luna_conf.content_type_whitelist:
-                return False                #must return True stand for doscan or False stand for not doscan.  
-        return True        
+        if type(header) != str:
+            if  'Content-Type' in header:
+                if header['Content-Type'] in self.luna_conf.content_type_whitelist:
+                    return False                #must return True stand for doscan or False stand for not doscan.  
+            return True 
+        else:
+            return False       
 
     def scan(self,luna_scan,luna_report):
         luna_vul = False

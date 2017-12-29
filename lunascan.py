@@ -108,7 +108,7 @@ class lunascan(object):
                             parstr_get += ver_get_key + urllib.quote(luna_exp.key_exp) + '=' +  urllib.quote(luna_exp.value_exp)
                             if i != len(self.get_key_list) - 1 :
                                 parstr_get += '&'
-                    request = http[0] + parstr_get + http[1]
+                    request = http[0] + parstr_get + http[1] 
                 if self.type_pointer == 2:                               #POST
                     if urlencode_type:
                         key_exp = urllib.quote(luna_exp.key_exp)
