@@ -14,7 +14,7 @@ class helloworld_exp(lunaexp.base):
         
         body=luna_scan.scan_for_body(self,0,scan_type,urlencode_type)
         if body[:10] == 'helloworld':
-            print self.method
+            print 'helloworld was found'
             time.sleep(5)   
             luna_report.report_http(luna_scan,self)
             return True
