@@ -1,5 +1,6 @@
 import output
 import function
+import platform
 
 import re
 import time
@@ -79,8 +80,12 @@ class parasehttp(object):
 
 
     def parase(self,luna_file,text):
+        sysstr = platform.system()
+        if(sysstr =="Windows"):
+            text = text[:-2]                              #remove \r\n
 
-        text = text[:-2]                              #remove \r\n
+        else:
+            text = text[:-1]                              #remove \n
 
         cookie = re.match(r'(?i)[\s\S]*Cookie\s*:\s*(.*)',text)
 
@@ -108,7 +113,7 @@ class parasehttp(object):
         elif text[:4] == 'POST':
             self.method_type = 2
             self.http_method = 'POST'
-            dynamic = re.match(r'POST\s*(.*)\??(\S*)\s*HTTP([\s\S]*?)\r\n\r\n([^\r]*)(?:\r\n\r\n)?',text)
+            dynamic = re.match(r'POST\s*(.*)\??(\S*)\s*HTTP([\s\S]*?)\r?\n\r?\n([^\r]*)(?:\r?\n\r?\n)?',text)
             if dynamic:
                 self.cgi = dynamic.group(1)
 
@@ -118,7 +123,7 @@ class parasehttp(object):
                 content_length_m = re.match(r'[\s\S]*Content-Length:\s*(\d+)\s*',dynamic.group(3))
                 if content_length_m:                    
                     self.content_length = content_length_m.group(1)
-                type_m = re.match(r'[\s\S]*Content-Type:\s*(.*)\s*\r\n',dynamic.group(3))
+                type_m = re.match(r'[\s\S]*Content-Type:\s*(.*)\s*\r?\n',dynamic.group(3))
                 if type_m:
 
                     if type_m.group(1)[:33] == "application/x-www-form-urlencoded":

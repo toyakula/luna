@@ -13,7 +13,7 @@ class err_sqli(lunaexp.base):
     ruleid = 0x0201
     method = ['GET','POST','COOKIE']
     key_exp = ''
-    value_exp = ""
+    value_exp = ''
     exp_list = ["'",'"',"xbf'xbf\"","xF0x27x27xF0x22x22","\\","JyI=","(select convert(int,CHAR(65)))","%27`\"%5C200%0d%0a1","1'\"","1x00xc0xa7xc0xa2",
                 "5e010x'%bf'1\"%bf\"1%23","@@abcde",
                 "1) and luna_sqli in (1","1%' and luna_sqli in (1) and '%'='","1' and luna_sqli in (1) and 'a'='a","1)) and luna_sqli in ((1",'1" and luna_sqli in (1) and "a"="a',"1') and luna_sqli in ('1",'1") and luna_sqli in ("1',
@@ -22,9 +22,6 @@ class err_sqli(lunaexp.base):
 
     rule_type = "err_sqli"
 
-    argv = 0
-
-    score = 0
     match_with = ""
 
     content_type_whitelist = []

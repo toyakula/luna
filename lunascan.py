@@ -80,7 +80,10 @@ class lunascan(object):
 
         
         connect_str = self.host+':'+str(self.port)
-        self.connection = httplib.HTTPConnection(connect_str)
+        if self.port == '443':
+            self.connection = httplib.HTTPSConnection(connect_str)
+        else:
+            self.connection = httplib.HTTPConnection(connect_str)
 
         if raw_scan:                                      #raw request
             if luna_exp.key_empty  or luna_exp.value_empty :
