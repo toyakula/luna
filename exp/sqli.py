@@ -26,12 +26,12 @@ class sqli(lunaexp.base):
 
    
     def scan_main(self,luna_scan,luna_report,scan_type,urlencode_type):                                                        #user_define
-        #exp = "err_sqli"
-        #module = __import__("exp.sql."+exp,{},{},list(exp))
-        #exp_obj = getattr(module, exp)()
-        #errsqli_vul = exp_obj.scan(luna_scan,luna_report)
-        #if errsqli_vul:
-            #return True
+        exp = "err_sqli"
+        module = __import__("exp.sql."+exp,{},{},list(exp))
+        exp_obj = getattr(module, exp)()
+        errsqli_vul = exp_obj.scan(luna_scan,luna_report)
+        if errsqli_vul:
+            return True
 
         exp = "timebased_sqli"
         module = __import__("exp.sql."+exp,{},{},list(exp))
