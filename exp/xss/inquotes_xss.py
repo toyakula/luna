@@ -38,7 +38,7 @@ class inquotes_xss(lunaexp.base):
         data = body
 
         n = body.split("luna_sta_xss_scan")
-        if n[self.argv+1]:
+        if len(n)>=2:
             new_body = n[self.argv+1]
             end = new_body.find("luna_end_xss_scan")
             new_body = new_body[:end]  
@@ -55,9 +55,11 @@ class inquotes_xss(lunaexp.base):
                         return False,self.match_with
                     else:
                         self.match_with += "[Anti Escape]"
+        else:
+            return False,self.match_with
 
         self.match_with += "[inquotes]"
         luna_output.vul_xss_output("[","inquotes_xss found","]")
-        #luna_report.report_http(luna_scan,self)
+        luna_report.report_http(luna_scan,self)
         return True,self.match_with
 

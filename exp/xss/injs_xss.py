@@ -46,7 +46,7 @@ class injs_xss(lunaexp.base):
         data = body
 
         n = body.split("luna_ref_xss_scan")
-        if n[self.argv+1]:
+        if len(n)>=2:
             if n[self.argv+1][0] == "0" or n[self.argv+1][0] == "a":
 
                 count = 18

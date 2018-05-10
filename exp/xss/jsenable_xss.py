@@ -44,7 +44,7 @@ class jsenable_xss(lunaexp.base):
                 return False,self.match_with
 
         n = body.split("luna_ref_xss_scan")
-        if n[self.argv+1]:
+        if len(n)>=2:
             if n[self.argv+1][0] == "0" or n[self.argv+1][0] == "a":
 
                 count = 18

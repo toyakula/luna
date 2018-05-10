@@ -39,16 +39,19 @@ class htmltag_xss(lunaexp.base):
         data = body
 
         n = body.split("luna_sta_xss_scan")
-        if n[self.argv+1]:
+        if len(n)>=2:
             new_body = n[self.argv+1]
             end = new_body.find("luna_end_xss_scan")
-            new_body = new_body[:end]  
+            if end > 0:
+                new_body = new_body[:end]  
+            else:
+                return False,self.match_with
             
             if new_body.find("<") == -1  or new_body.find(">") == -1 :
                 self.value_exp =  self.value_exp_2  
                 body = luna_scan.scan_for_body(self,0,scan_type,urlencode_type)
                 n = body.split("luna_sta_xss_scan")
-                if n[self.argv+1]:
+                if len(n)>=2:
                     new_body = n[self.argv+1]
                     end = new_body.find("luna_end_xss_scan")
                     new_body = new_body[:end] 
@@ -58,8 +61,11 @@ class htmltag_xss(lunaexp.base):
                     else:
                         self.match_with += "[Anti Escape]"
 
+        else:
+            return False,self.match_with
+
         self.match_with += "[html_tag]"
         luna_output.vul_xss_output("[","htmltag_xss found","]")
-        #luna_report.report_http(luna_scan,self)
+        luna_report.report_http(luna_scan,self)
         return True,self.match_with
 
