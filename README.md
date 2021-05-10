@@ -78,13 +78,3 @@ Luna works out of the box with [Python](http://www.python.org/download/) version
 **Gmail** ： [luna.pyc@gmail.com](mailto:luna.pyc@gmail.com)
 
 **Blog** ： [https://tokula.com](https://tokula.com)
-
-
-
-## Support
-
-**赞助Luna** ： 使用微信扫描下方的小程序码。
-
-**Donate to Luna**:  Scan the under picture by Wechat.
-
-![admiration](https://user-images.githubusercontent.com/32926900/34337413-0f22b2fe-e99a-11e7-8d0c-e422ff7b1b33.jpg)
