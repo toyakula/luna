@@ -71,10 +71,3 @@ Luna works out of the box with [Python](http://www.python.org/download/) version
 
 3.  python luna.py
 
-
-
-## Contact
-
-**Gmail** ： [luna.pyc@gmail.com](mailto:luna.pyc@gmail.com)
-
-**Blog** ： [https://tokula.com](https://tokula.com)
